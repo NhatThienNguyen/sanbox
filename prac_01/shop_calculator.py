@@ -2,7 +2,7 @@ DISCOUNT_THRESHOLD = 100
 DISCOUNT_RATE = 0.1
 
 number_of_items = int(input("Number of items: "))
-total_price = 0
+total_price =0
 
 while number_of_items <= 0:
     print("Invalid number of items")
