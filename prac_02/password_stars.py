@@ -1,6 +1,10 @@
 def main():
     password = get_password()
-    print(len(password)* "*")
+    print_asterisks(password)
+
+
+def print_asterisks(password):
+    print(len(password) * "*")
 
 
 def get_password():
