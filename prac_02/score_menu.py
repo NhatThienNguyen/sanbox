@@ -10,9 +10,10 @@ def main():
             score = int(input("Enter your score: "))
             valid_score = validate_score(score)
         elif choice == "P":
-            pass
+            result = check_grade(valid_score)
+            print(f"Your result is {result}")
         elif choice == "S":
-            pass
+            print(valid_score*"*")
         else:
             print("Invalid choice")
         print(MENU)
@@ -25,6 +26,15 @@ def validate_score(score):
         print("Invalid score")
         score = int(input("Enter your score: "))
     return score
+
+
+def check_grade(valid_score):
+    if valid_score >= 90:
+        return "Excellent"
+    elif valid_score >= 50:
+        return "Passable"
+    else:
+        return "Bad"
 
 
 main()
