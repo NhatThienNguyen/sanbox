@@ -5,6 +5,8 @@ Broken program to determine score status
 
 def main():
     score = float(input("Enter score: "))
+    result = check_grade(score)
+    print(result)
 
 
 def check_grade(score):
