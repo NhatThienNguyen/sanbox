@@ -13,3 +13,11 @@ with open("numbers.txt","r") as numbers:
     first_number = int(numbers.readline().strip())
     second_number = int(numbers.readline().strip())
     print(first_number + second_number)
+# 4
+with open("numbers.txt","r") as numbers:
+    total = 0
+    numbers = numbers.readlines()
+    for number in numbers:
+        number.strip()
+        total += int(number)
+    print(total)
