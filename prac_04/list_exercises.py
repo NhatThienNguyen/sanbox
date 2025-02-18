@@ -12,8 +12,8 @@ print(f"The smallest number is {min(numbers)}")
 print(f"The largest number is {max(numbers)}")
 print(f"The average number is {sum(numbers) / len(numbers)}")
 
-name = input("What's your username? ")
+name = input("What is your username? ")
 while name not in usernames:
     print("Access Denied")
-    name = input("What's your username? ")
+    name = input("What is your username? ")
 print("Access granted")
