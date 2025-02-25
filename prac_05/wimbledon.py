@@ -1,7 +1,7 @@
 """
 Wimbledon
 Estimate: 20 minutes
-Actual:
+Actual: 1 hour
 """
 import csv
 
