@@ -15,6 +15,8 @@ def main():
             name = input("Enter your name: ").title()
             email_to_name[email] = name
         email = input('Enter your email: ').strip()
+    for email, name in email_to_name.items():
+        print(f"{name} ({email})" )
 
 
 def extract_name(email):
