@@ -20,6 +20,7 @@ def main():
 
 
 def extract_name(email):
+    """To extract name from email"""
     name = email.split('@')[0].replace('.', ' ').title()
     return name
 
