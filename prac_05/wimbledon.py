@@ -10,8 +10,7 @@ FILENAME = "wimbledon.csv"
 def main():
     champion_names, countries = load_data(FILENAME)
     champion_to_win = count_win(champion_names)
-    display_champion(champion_to_win)
-    display_countries(countries)
+    display_champion_info(champion_to_win,countries)
 
 
 def load_data(FILENAME):
@@ -38,13 +37,11 @@ def count_win(champion_names):
     return champion_to_win
 
 
-def display_champion(champion_to_win):
+def display_champion_info(champion_to_win,countries):
+    max_width = max((len(champion) for champion in champion_to_win.keys()))
     print("Wimbledon Champion")
     for champion, count in champion_to_win.items():
-        print(f"{champion} {count}")
-
-
-def display_countries(countries):
+        print(f"{champion:{max_width}} {count}")
     print(f"These are {len(countries)} countries have won Wimbledon:")
     print(f", ".join(sorted(countries)))
 
