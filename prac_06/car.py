@@ -31,4 +31,5 @@ class Car:
         return distance
 
 
-limo = Car(fuel=100)
+limo = Car(fuel=100)\
+limo.add_fuel(20)
