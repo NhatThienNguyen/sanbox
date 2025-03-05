@@ -4,7 +4,7 @@ Actual time:
 """
 class Guitar:
     """Represents guitar object"""
-    def __init__(self, name='', year=0, cost=0):
+    def __init__(self, name='', year=0, cost=0.0):
         """Initialise a Guitar with name, year and cost"""
         self.name = name
         self.year = year
