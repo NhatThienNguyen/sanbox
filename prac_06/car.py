@@ -33,6 +33,7 @@ class Car:
 
 
     def __str__(self):
+        """To print out the object"""
         return f"Car={self.name}, fuel={self.fuel}, odometer={self._odometer}"
 
 
