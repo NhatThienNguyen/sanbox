@@ -11,7 +11,7 @@ class ProgrammingLanguage:
 
 
     def is_dynamic(self):
-        return self.typing == 'dynamic'
+        return self.typing == 'Dynamic'
 
 
     def __str__(self):
