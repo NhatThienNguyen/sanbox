@@ -1,6 +1,6 @@
 """
 Estimate time: 20 minutes
-Actual time:
+Actual time: 21 minutes
 """
 class ProgrammingLanguage:
     def __init__(self, name, typing, reflection, year):
