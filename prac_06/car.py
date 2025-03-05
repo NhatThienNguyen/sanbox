@@ -34,3 +34,6 @@ class Car:
 
     def __str__(self):
         return f"Car={self.name}, fuel={self.fuel}, odometer={self._odometer}"
+
+
+print(Car(name="limo", fuel=100))
