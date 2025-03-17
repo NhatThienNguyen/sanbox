@@ -10,8 +10,9 @@ IN_FILE = "guitars.csv"
 
 def main():
     guitars = get_data()
-    print(guitars)
-
+    guitars.sort()
+    for guitar in guitars:
+        print(guitar)
 
 
 def get_data():
