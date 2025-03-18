@@ -9,6 +9,7 @@ FILE_NAME = "guitars.csv"
 
 
 def main():
+    """Full program"""
     guitars = get_data(FILE_NAME)
     guitars.sort()
     for guitar in guitars:
@@ -27,6 +28,7 @@ def main():
 
 
 def get_data(file_name):
+    """get data from the file and save it"""
     guitars = []
     with open(file_name) as in_file:
         reader = csv.reader(in_file)
@@ -39,6 +41,7 @@ def get_data(file_name):
 
 
 def save_data(guitars, file_name):
+    """save data to a file"""
     with open(file_name, "w", encoding="utf-8", newline='') as out_file:
         writer = csv.writer(out_file, delimiter=',')
         for guitar in guitars:
