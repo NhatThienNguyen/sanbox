@@ -1,6 +1,6 @@
 """
 Estimate time: 20 minutes
-Actual time:
+Actual time: 40 minutes
 """
 import csv
 from prac_07.guitar import Guitar

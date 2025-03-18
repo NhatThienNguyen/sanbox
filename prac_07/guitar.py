@@ -1,6 +1,6 @@
 """
 Estimate time: 20 minutes
-Actual time:
+Actual time: 40 minutes
 """
 class Guitar:
     """Represents guitar object"""
