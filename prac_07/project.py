@@ -15,3 +15,5 @@ class Project:
         return f"{self.name}, start: {self.date}, priority: {self.priority}, estimate: ${self.cost:.2f}, completion: {self.complete}%"
 
 
+    def __lt__(self, other):
+        return self.priority < other.priority
