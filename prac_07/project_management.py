@@ -34,6 +34,12 @@ def main():
                 i += 1
             project_choice = get_valid_project_choice(incomplete_projects)
             print(incomplete_projects[project_choice])
+            new_percentage = get_valid_input("New Percentage: ")
+            if new_percentage >= incomplete_projects[project_choice].complete and new_percentage !='':
+                incomplete_projects[project_choice].complete = new_percentage
+            new_priority = get_valid_input("New Priority: ")
+            if new_priority != incomplete_projects[project_choice].priority and new_priority != '':
+                incomplete_projects[project_choice].priority = new_priority
         print(MENU)
         choice = input(">>> ").upper()
 
@@ -85,6 +91,11 @@ def get_valid_project_choice(incomplete_projects):
     return choice
 
 
+def get_valid_input(prompt):
+    new_input = input(prompt)
+    if new_input !="":
+        new_input=int(new_input)
+    return new_input
 
 
 main()
