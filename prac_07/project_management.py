@@ -12,6 +12,7 @@ FILE_NAME ="projects.txt"
 
 def main():
     projects = get_data(FILE_NAME)
+    incomplete_projects = check_complete_state(projects)
     print(projects)
     print(f"Welcome to Pythonic Project Management\nLoaded 5 projects from projects.txt\n{MENU}")
     choice = input(">>> ").upper()
@@ -21,14 +22,18 @@ def main():
         elif choice == "S":
             pass
         elif choice == "D":
-            incomplete_projects = check_complete_state(projects)
             display_projects(projects, incomplete_projects)
         elif choice == "F":
             pass
         elif choice == "A":
             pass
         elif choice == "U":
-            pass
+            i = 0
+            for project in incomplete_projects:
+                print(f"{i} {project}")
+                i += 1
+            project_choice = get_valid_project_choice(incomplete_projects)
+            print(incomplete_projects[project_choice])
         print(MENU)
         choice = input(">>> ").upper()
 
@@ -44,6 +49,7 @@ def get_data(file_name):
             completion = int(line[4])
             project = Project(line[0], line[1], priority, cost, completion)
             projects.append(project)
+            projects.sort()
     return projects
 
 
@@ -63,6 +69,22 @@ def check_complete_state(projects):
         if project.complete < 100:
             incomplete_projects.append(project)
     return incomplete_projects
+
+
+def get_valid_project_choice(incomplete_projects):
+    valid_state = False
+    while not valid_state:
+        try:
+            choice = int(input("Project choice: "))
+            if 0 <= choice < len(incomplete_projects):
+                valid_state = True
+            else:
+                print("Out of range, choose other number")
+        except ValueError:
+            print("Invalid choice")
+    return choice
+
+
 
 
 main()
