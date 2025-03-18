@@ -31,8 +31,8 @@ def get_data(file_name):
     with open(file_name) as in_file:
         reader = csv.reader(in_file)
         for row in reader:
-            year = int(row[1])
-            cost = float(row[2])
+            year = int(row[2])
+            cost = float(row[1])
             guitar= Guitar(row[0], year, cost)
             guitars.append(guitar)
     return guitars
