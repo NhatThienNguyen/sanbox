@@ -42,7 +42,7 @@ def save_data(guitars, file_name):
     with open(file_name, "w", encoding="utf-8", newline='') as out_file:
         writer = csv.writer(out_file, delimiter=',')
         for guitar in guitars:
-            writer.writerow(guitar)
+            writer.writerow([guitar.name,guitar.cost, guitar.year])
 
 
 main()
