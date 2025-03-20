@@ -13,12 +13,13 @@ FILE_NAME ="projects.txt"
 def main():
     projects = get_data(FILE_NAME)
     print(projects)
-    print(f"Welcome to Pythonic Project Management\nLoaded 5 projects from projects.txt\n{MENU}")
+    print(f"Welcome to Pythonic Project Management\nLoaded {len(projects)} projects from {FILE_NAME}\n{MENU}")
     choice = input(">>> ").upper()
     while choice != "Q":
         incomplete_projects = check_complete_state(projects)
         if choice == "L":
-            pass
+            projects = load_data()
+            print(f"Loaded {len(projects)} projects from {FILE_NAME}")
         elif choice == "S":
             pass
         elif choice == "D":
@@ -41,9 +42,6 @@ def main():
             new_priority = get_valid_input("New Priority: ")
             if new_priority != incomplete_projects[project_choice].priority and new_priority != '':
                 incomplete_projects[project_choice].priority = new_priority
-
-
-
         print(MENU)
         choice = input(">>> ").upper()
 
@@ -130,6 +128,32 @@ def filer_datetime(projects):
     for project in projects:
         if project.date >= input_date:
             print(f"{project}")
+
+
+def load_data():
+    projects = []
+    valid_state = False
+    while not valid_state:
+        try:
+            file_name = input("Load file: ")
+            if ".txt" not in file_name:
+                file_name = file_name+".txt"
+            with open(file_name, "r") as in_file:
+                data = in_file.readlines()
+                valid_state = True
+        except FileNotFoundError:
+            print("File not found")
+    for line in data[1:]:
+        line = line.replace("\n", "").replace("\t", ", ").split(",")
+        line[1] = line[1].strip()
+        date = datetime.datetime.strptime(line[1], "%d/%m/%Y").date()
+        priority = int(line[2])
+        cost = float(line[3])
+        completion = int(line[4])
+        project = Project(line[0], date, priority, cost, completion)
+        projects.append(project)
+        projects.sort()
+    return projects
 
 
 main()
