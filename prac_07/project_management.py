@@ -12,11 +12,11 @@ FILE_NAME ="projects.txt"
 
 def main():
     projects = get_data(FILE_NAME)
-    incomplete_projects = check_complete_state(projects)
     print(projects)
     print(f"Welcome to Pythonic Project Management\nLoaded 5 projects from projects.txt\n{MENU}")
     choice = input(">>> ").upper()
     while choice != "Q":
+        incomplete_projects = check_complete_state(projects)
         if choice == "L":
             pass
         elif choice == "S":
@@ -24,9 +24,10 @@ def main():
         elif choice == "D":
             display_projects(projects, incomplete_projects)
         elif choice == "F":
-            pass
+            filer_datetime(projects)
         elif choice == "A":
-            add_new_project(incomplete_projects)
+            print("Let's add a new project")
+            add_new_project(projects)
         elif choice == "U":
             i = 0
             for project in incomplete_projects:
@@ -40,6 +41,9 @@ def main():
             new_priority = get_valid_input("New Priority: ")
             if new_priority != incomplete_projects[project_choice].priority and new_priority != '':
                 incomplete_projects[project_choice].priority = new_priority
+
+
+
         print(MENU)
         choice = input(">>> ").upper()
 
@@ -50,10 +54,12 @@ def get_data(file_name):
         data = in_file.readlines()
         for line in data[1:]:
             line = line.replace("\n", "").replace("\t", ", ").split(",")
+            line[1]= line[1].strip()
+            date = datetime.datetime.strptime(line[1], "%d/%m/%Y").date()
             priority = int(line[2])
             cost = float(line[3])
             completion = int(line[4])
-            project = Project(line[0], line[1], priority, cost, completion)
+            project = Project(line[0], date, priority, cost, completion)
             projects.append(project)
             projects.sort()
     return projects
@@ -98,15 +104,32 @@ def get_valid_input(prompt):
     return new_input
 
 
-def add_new_project(incomplete_projects):
+def add_new_project(projects):
     name = input("Name: ")
     start_date = input("Start date (dd/mm/yy): ")
+    start_date = datetime.datetime.strptime(start_date, "%d/%m/%Y").date()
     priority = int(input("Priority: "))
     cost = float(input("Cost estimate: $"))
     completion = int(input("Percent complete: "))
     project = Project(name, start_date, priority, cost, completion)
-    incomplete_projects.append(project)
-    return incomplete_projects
+    projects.append(project)
+    return projects
+
+
+def update_projects(projects, incomplete_projects):
+    for project in incomplete_projects:
+        if project.complete == 100:
+            projects.remove(project)
+            projects.append(project)
+    return projects
+
+
+def filer_datetime(projects):
+    input_date = input("Show projects that start after date (dd/mm/yy): ")
+    input_date = datetime.datetime.strptime(input_date, "%d/%m/%Y").date()
+    for project in projects:
+        if project.date >= input_date:
+            print(f"{project}")
 
 
 main()
