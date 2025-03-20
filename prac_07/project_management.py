@@ -11,6 +11,7 @@ FILE_NAME ="projects.txt"
 
 
 def main():
+    """Main function with interactive menu"""
     projects = get_data(FILE_NAME)
     print(projects)
     print(f"Welcome to Pythonic Project Management\nLoaded {len(projects)} projects from {FILE_NAME}\n{MENU}")
@@ -54,6 +55,7 @@ def main():
 
 
 def get_data(file_name):
+    """Get data from file and convert it to list"""
     projects =[]
     with open(file_name, "r") as in_file:
         data = in_file.readlines()
@@ -71,6 +73,7 @@ def get_data(file_name):
 
 
 def display_projects(projects,incomplete_projects):
+    """Display all the projects"""
     print("Incomplete projects:")
     for project in incomplete_projects:
         print(f"\t{project}")
@@ -81,6 +84,7 @@ def display_projects(projects,incomplete_projects):
 
 
 def check_complete_state(projects):
+    """Checking for complete state of project, if not yet complete will be added to another list"""
     incomplete_projects = []
     for project in projects:
         if project.complete < 100:
@@ -89,6 +93,7 @@ def check_complete_state(projects):
 
 
 def get_valid_project_choice(incomplete_projects):
+    """Get valid project choice to make sure the index won't go out of range or not right input"""
     valid_state = False
     while not valid_state:
         try:
@@ -103,6 +108,7 @@ def get_valid_project_choice(incomplete_projects):
 
 
 def get_valid_input(prompt):
+    """Get valid input from user"""
     new_input = input(prompt)
     if new_input !="":
         new_input=int(new_input)
@@ -110,6 +116,7 @@ def get_valid_input(prompt):
 
 
 def add_new_project(projects):
+    """Add new project and save to the list"""
     name = input("Name: ")
     start_date = input("Start date (dd/mm/yy): ")
     start_date = datetime.datetime.strptime(start_date, "%d/%m/%Y").date()
@@ -122,6 +129,7 @@ def add_new_project(projects):
 
 
 def update_projects(projects, incomplete_projects):
+    """Update the projects list for project already have 100% completion"""
     for project in incomplete_projects:
         if project.complete == 100:
             projects.remove(project)
@@ -130,6 +138,7 @@ def update_projects(projects, incomplete_projects):
 
 
 def filer_datetime(projects):
+    """Convert to datetime and filter it"""
     input_date = input("Show projects that start after date (dd/mm/yy): ")
     input_date = datetime.datetime.strptime(input_date, "%d/%m/%Y").date()
     for project in projects:
@@ -138,6 +147,7 @@ def filer_datetime(projects):
 
 
 def load_data():
+    """Load data from user file"""
     projects = []
     valid_state = False
     while not valid_state:
@@ -164,9 +174,10 @@ def load_data():
 
 
 def save_data(projects):
+    """save data to file"""
     with open(FILE_NAME, "w") as out_file:
         for project in projects:
-            out_file.write(f"{project.name} {project.date} {project.priority} {project.cost} {project.completion}\n")
+            out_file.write(f"{project.name} {project.date} {project.priority} {project.cost} {project.complete}\n")
 
 
 main()
