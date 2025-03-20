@@ -26,7 +26,7 @@ def main():
         elif choice == "F":
             pass
         elif choice == "A":
-            pass
+            add_new_project(incomplete_projects)
         elif choice == "U":
             i = 0
             for project in incomplete_projects:
@@ -96,6 +96,17 @@ def get_valid_input(prompt):
     if new_input !="":
         new_input=int(new_input)
     return new_input
+
+
+def add_new_project(incomplete_projects):
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yy): ")
+    priority = int(input("Priority: "))
+    cost = float(input("Cost estimate: $"))
+    completion = int(input("Percent complete: "))
+    project = Project(name, start_date, priority, cost, completion)
+    incomplete_projects.append(project)
+    return incomplete_projects
 
 
 main()
