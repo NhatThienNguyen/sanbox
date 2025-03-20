@@ -21,7 +21,11 @@ def main():
             projects = load_data()
             print(f"Loaded {len(projects)} projects from {FILE_NAME}")
         elif choice == "S":
-            pass
+            save_choice = input(f"Do you want to save to {FILE_NAME}? (y/n) ").upper()
+            if save_choice == "Y":
+                save_data(projects)
+            else:
+                print("No saving has been made")
         elif choice == "D":
             display_projects(projects, incomplete_projects)
         elif choice == "F":
@@ -44,6 +48,9 @@ def main():
                 incomplete_projects[project_choice].priority = new_priority
         print(MENU)
         choice = input(">>> ").upper()
+    save_choice = input(f"Do you want to save to {FILE_NAME}? ").upper()
+    if save_choice != "Y" or save_choice != "YES":
+        print("Thank you for using custom-built project management software!")
 
 
 def get_data(file_name):
@@ -154,6 +161,12 @@ def load_data():
         projects.append(project)
         projects.sort()
     return projects
+
+
+def save_data(projects):
+    with open(FILE_NAME, "w") as out_file:
+        for project in projects:
+            out_file.write(f"{project.name} {project.date} {project.priority} {project.cost} {project.completion}\n")
 
 
 main()
