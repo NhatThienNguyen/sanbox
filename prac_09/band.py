@@ -1,6 +1,3 @@
-from prac_03.exceptions_to_complete import result
-
-
 class Band:
     def __init__(self, name=''):
         self.name = name
