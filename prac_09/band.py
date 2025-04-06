@@ -9,3 +9,9 @@ class Band:
 
     def __str__(self):
         return f"{self.name} ({', '.join(str(musician) for musician in self.musicians)})"
+
+
+    def add(self,musician):
+        return self.musicians.append(musician)
+
+
