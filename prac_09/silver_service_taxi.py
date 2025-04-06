@@ -14,6 +14,11 @@ class SilverServiceTaxi(Taxi):
         return f"{super().__str__()}, plus flagfall of {self.flagfall:.2f}"
 
 
-    def calculate_fare(self, distance):
+    def drive(self, distance):
+        return super().drive(distance)
+
+
+    def calculate_fare(self):
         """Calculate the fare of a service based on price, fanciness, distance and flagfall"""
-        return (self.price_per_km * self.fanciness) * super().drive(distance) + self.flagfall
+        base_fare = super().get_fare()
+        return base_fare * self.fanciness + self.flagfall
