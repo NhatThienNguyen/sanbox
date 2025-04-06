@@ -12,12 +12,11 @@ def main():
     current_taxi = None
     total_bill = 0
     while choice != 'q':
-        print(f"Bill to date:")
         if choice == 'c':
             i = 0
             for taxi in taxis:
-                i+=1
-            print(f"{i} - {taxi}")
+                print(f"{i} - {taxi}")
+                i += 1
             try:
                 taxi_choice = int(input("Choose taxi: "))
                 if 0 <= taxi_choice < len(taxis):
@@ -26,3 +25,17 @@ def main():
                     print("Invalid taxi choice!")
             except ValueError:
                 print("Invalid input!")
+        elif choice =='d':
+            pass
+        else:
+            print("Invalid option!")
+        print(f"Bill to date: {total_bill}")
+        print(MENU)
+    print(f"Total trip cost: {total_bill}")
+    print("Taxis are now:")
+    i = 0
+    for taxi in taxis:
+        print(f"{i} - {taxi}")
+
+
+main()
