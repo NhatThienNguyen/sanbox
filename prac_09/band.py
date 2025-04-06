@@ -15,3 +15,8 @@ class Band:
         return self.musicians.append(musician)
 
 
+    def play(self):
+        result = []
+        for musician in self.musicians:
+            result.append(musician.play())
+        return "\n".join(result)
