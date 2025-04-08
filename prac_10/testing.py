@@ -32,7 +32,6 @@ def run_tests():
     # the test below should fail
     assert repeat_string("hi", 2) == "hi hi"
 
-    # TODO: 1. fix the repeat_string function above so that it passes the failing test
     # Hint: "-".join(["yo", "yo"] -> "yo-yo"
 
     # assert test with custom message,
@@ -42,7 +41,7 @@ def run_tests():
     assert car._odometer == 0, "Car does not set odometer correctly"
     test_car = Car(fuel=10)
     assert test_car.fuel == 10, "Car does not set odometer correctly"
-    # TODO: 2. write assert statements to show if Car sets the fuel correctly
+
     # Note that Car's __init__ function sets the fuel in one of two ways:
     # using the value passed in or the default
     # You should test both of these
@@ -51,11 +50,11 @@ def run_tests():
 
 run_tests()
 
-# TODO: 3. Uncomment the following line and run the doctests
+
 # (PyCharm may see your >>> doctest comments and run doctests anyway.)
 doctest.testmod()
 
-# TODO: 4. Fix the failing is_long_word function
+
 # (Don't change the tests, change the function!)
 
 # TODO: 5. Write and test a function to format a phrase as a sentence,
@@ -67,3 +66,16 @@ doctest.testmod()
 # and one more that you decide is a useful test.
 # Run your doctests and watch the tests fail.
 # Then write the body of the function so that the tests pass.
+def format_as_sentence():
+    """
+    Starting with a capital and ending with a single full stop
+    >>> format_as_sentence("Hello")
+    'Hello.'
+    >>> format_as_sentence("It is an ex parrot.")
+    'It is an ex parrot.'
+    >>> format_as_sentence("this Is a TesT")
+    """
+    phrase = phrase.capitalize()
+    if not phrase.endswith("."):
+        phrase = phrase + "."
+    return phrase
