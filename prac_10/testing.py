@@ -39,14 +39,12 @@ def run_tests():
     # this should pass (no output)
     car = Car()
     assert car._odometer == 0, "Car does not set odometer correctly"
-    test_car = Car(fuel=10)
-    assert test_car.fuel == 10, "Car does not set odometer correctly"
 
     # Note that Car's __init__ function sets the fuel in one of two ways:
     # using the value passed in or the default
     # You should test both of these
-    # car = Car(fuel=10)
-
+    car = Car(fuel=10)
+    assert car.fuel == 10, "Car does not set odometer correctly"
 
 run_tests()
 
@@ -66,14 +64,15 @@ doctest.testmod()
 # and one more that you decide is a useful test.
 # Run your doctests and watch the tests fail.
 # Then write the body of the function so that the tests pass.
-def format_as_sentence():
+def format_as_sentence(phrase):
     """
     Starting with a capital and ending with a single full stop
     >>> format_as_sentence("Hello")
     'Hello.'
     >>> format_as_sentence("It is an ex parrot.")
     'It is an ex parrot.'
-    >>> format_as_sentence("this Is a TesT")
+    >>> format_as_sentence("this is a Test")
+    'This is a test.'
     """
     phrase = phrase.capitalize()
     if not phrase.endswith("."):
